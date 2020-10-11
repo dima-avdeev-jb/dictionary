@@ -7,6 +7,5 @@ val allDictionaries by lazy {
     buildList {
         add(dictionary1)
         add(dictionary2)
-        add(dictionary3)
     }
 }

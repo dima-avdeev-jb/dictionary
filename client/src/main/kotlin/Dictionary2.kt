@@ -1,11 +1,13 @@
 @OptIn(ExperimentalStdlibApi::class)
 val dictionary2
     get() = Dictionary(
-        name = "Англо-русский",
+        name = "Англо-русский 2",
         useByDefault = false,
         words = buildList {
-            word("Dog", "Собака")
-            word("Cat", "Кошка")
+            word("facets","грани")
+            word("cadence","каденция")
+            word("insight","в поле зрения")
+            word("facilitate","облегчить")
         }
     )
 
