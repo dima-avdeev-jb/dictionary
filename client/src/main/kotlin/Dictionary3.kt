@@ -30,10 +30,5 @@ val dictionary3
             word("mandatory", "обязательно")
             word("brief", "краткий")
             word("pace", "темп")
-            word("", "")
-            word("", "")
-            word("", "")
-            word("", "")
-            word("", "")
         }
     )
