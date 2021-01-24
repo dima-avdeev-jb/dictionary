@@ -6,7 +6,7 @@ val dictionary2
         words = buildList {
             word("facets","грани")
             word("cadence","каденция")
-            word("insight","в поле зрения")
+            word("insight / insights","в поле зрения / идеи")
             word("facilitate","облегчить")
             word("further","в дальнейшем")
             word("permission","разрешение")
@@ -19,7 +19,7 @@ val dictionary2
             word("specifies whether an action","указывает, является ли действие")
             word("stand by","ожидать")
             word("thorough","тщательный")
-            word("thoughts","мысли")
+            word("though / thought, thoughts","хотя / мысли")
             word("recomposing","перекомпоновка")
             word("compose","сочинять")
             word("pros / cons","за и против")
