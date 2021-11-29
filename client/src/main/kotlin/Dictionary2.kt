@@ -2,23 +2,19 @@
 val dictionary2
     get() = Dictionary(
         name = "Англо-русский 2",
-        useByDefault = false,
+        useByDefault = true,
         words = buildList {
-            word("facets","грани")
             word("cadence","каденция")
             word("insight / insights","в поле зрения / идеи")
             word("facilitate","облегчить")
             word("further","в дальнейшем")
             word("permission","разрешение")
             word("draft","проект")
-            word("redeem","выкупать")
-            word("relative","родственник")
             word("derived from","происходит от")
             word("copper","медь")
             word("inferred","предполагаемый")
             word("specifies whether an action","указывает, является ли действие")
             word("stand by","ожидать")
-            word("thorough","тщательный")
             word("though / thought, thoughts","хотя / мысли")
             word("recomposing","перекомпоновка")
             word("compose","сочинять")
@@ -30,13 +26,12 @@ val dictionary2
             word("handy","удобный")
             word("For instance, calculating the moving average from a data stream","Например, вычисление скользящего среднего из потока данных")
             word("implies","подразумевает")
-            word("Eagerly","С нетерпением")
+            word("eagerly","С нетерпением")
             word("further","в дальнейшем")
             word("moonshot","лунный выстрел")
             word("annual","годовой")
             word("reliability","надежность")
-            word("converge","сходиться")
-            word("convergence","конвергенция")
+            word("converge, convergence","сходиться, конвергенция")
             word("eviden","доказывать")
             word("steer","управлять")
             word("Up For Grabs","Для захватов")
@@ -44,8 +39,7 @@ val dictionary2
             word("beyond","за пределами")
             word("counterpart","двойник")
             word("gradually","постепенно")
-            word("lever","рычаг")
-            word("leveraging","использование")
+            word("lever, leveraging","рычаг, использование")
             word("tightly","плотно")
             word("enzyme","фермент")
         }
