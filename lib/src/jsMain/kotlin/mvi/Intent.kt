@@ -1,6 +1,6 @@
 package mvi
 
-import Dictionary
+import dict.Dictionary
 
 sealed class Intent {
     class ChooseDictionary(val dictionary: Dictionary) : Intent()

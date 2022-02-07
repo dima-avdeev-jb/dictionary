@@ -7,6 +7,9 @@ plugins {
 kotlin {
     js(IR) {
         browser() {
+            webpackTask {
+                sourceMaps = true
+            }
             binaries.executable()
         }
     }

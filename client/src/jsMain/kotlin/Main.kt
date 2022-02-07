@@ -1,6 +1,6 @@
 import mvi.Intent
-import mvi.store
 import kotlinx.browser.document
+import org.jetbrains.compose.web.renderComposable
 
 fun main() {
     renderComposable(rootElementId = "root") {

@@ -1,11 +1,8 @@
-//package mvi
-
-import react.RState
-
+package dict
 data class State(
     val deployTime: String = "",
     val screen: Screen = Screen.Dictionaries(allDictionaries.filter { it.useByDefault }.toSet())
-) : RState
+)
 
 sealed class Screen {
     data class Dictionaries(

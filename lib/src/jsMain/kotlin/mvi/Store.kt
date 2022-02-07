@@ -1,14 +1,7 @@
 package mvi
 
-import BrowserStorage
-import Screen
-import State
-import StoreItem
-import WordState
-import currentUnixTime
-import findNextWord
+import dict.*
 import kotlinx.coroutines.CoroutineScope
-import lib.Mvi
 
 fun CoroutineScope.createStore() = createStoreWithSideEffect<State, Intent, SideEffect>(
     State(),

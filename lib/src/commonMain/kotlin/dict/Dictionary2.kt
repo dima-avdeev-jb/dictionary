@@ -1,3 +1,5 @@
+package dict
+
 @OptIn(ExperimentalStdlibApi::class)
 val dictionary2
     get() = Dictionary(

@@ -1,3 +1,5 @@
+package dict
+
 import kotlin.random.Random
 
 fun findNextWord(word: Word?, words: List<Word>, storage: Storage): Word {

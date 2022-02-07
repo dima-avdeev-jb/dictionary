@@ -16,8 +16,8 @@ fun SetupComposable() {
     val state by store.stateFlow.collectAsState()
     Div {
         RenderAppState(state) {
+            store.send(it)
         }
-        store.send(it)
     }
 }
 
