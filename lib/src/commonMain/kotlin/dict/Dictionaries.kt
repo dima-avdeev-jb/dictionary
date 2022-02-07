@@ -10,5 +10,6 @@ val allDictionaries: Iterable<Dictionary> by lazy {
         add(dictionary2)
         add(dictionary3)
         add(dictionary4)
+        add(dictionary5)
     }
 }
