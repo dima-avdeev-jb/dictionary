@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-./gradlew client:myBuildProduction
+set -euo pipefail
+
+./gradlew client:jsBrowserWebpack
 
 cp -r client/build/distributions/* docs
 du -sh docs/*

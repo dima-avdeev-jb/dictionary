@@ -1,4 +1,3 @@
-import kotlinx.html.currentTimeMillis
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
@@ -45,3 +44,4 @@ object BrowserStorage : Storage {
 }
 
 fun currentUnixTime() = (currentTimeMillis() / 1000).toInt()
+fun currentTimeMillis() = kotlin.js.Date.now().toLong()

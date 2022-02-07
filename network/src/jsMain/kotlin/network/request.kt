@@ -3,7 +3,7 @@ package network
 import kotlinx.coroutines.await
 import lib.Result2
 import org.w3c.fetch.RequestInit
-import kotlin.browser.window
+import kotlinx.browser.window
 import kotlin.js.json
 
 actual suspend fun requestStr(

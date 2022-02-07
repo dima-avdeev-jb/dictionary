@@ -7,21 +7,13 @@ import StoreItem
 import WordState
 import currentUnixTime
 import findNextWord
+import kotlinx.coroutines.CoroutineScope
 import lib.Mvi
-import network.requestStr
 
-val store = Mvi.store<State, Intent, SideEffect>(
+fun CoroutineScope.createStore() = createStoreWithSideEffect<State, Intent, SideEffect>(
     State(),
-    sideEffectHandler = { store, effect ->
+    effectHandler = { store, effect ->
         when (effect) {
-            is SideEffect.LoadDeployTime -> {
-                requestStr("build_date.txt")
-                    .onSuccess { str ->
-                        store.dispatch(Intent.SetDeployTime(str))
-                    }.onFailure {
-                        store.dispatch(Intent.SetDeployTime("offline"))
-                    }
-            }
             is SideEffect.StoreWord -> {
                 val item = BrowserStorage.getItem(effect.key) ?: StoreItem()
                 val result = if (effect.success) {
@@ -39,16 +31,8 @@ val store = Mvi.store<State, Intent, SideEffect>(
             }
         }.let {}
     }
-) { state, intent ->
+) { state, intent:Intent ->
     when (intent) {
-        is Intent.LoadDeployTime -> {
-            SideEffect.LoadDeployTime.onlySideEffect()
-        }
-        is Intent.SetDeployTime -> {
-            state.copy(
-                deployTime = intent.deployTime
-            ).onlyState()
-        }
         is Intent.ChooseDictionary -> {
             if (state.screen is Screen.Dictionaries) {
                 val contains = state.screen.selected.contains(intent.dictionary)
@@ -60,9 +44,9 @@ val store = Mvi.store<State, Intent, SideEffect>(
                             state.screen.selected + intent.dictionary
                         }
                     )
-                ).onlyState()
+                ).noSideEffects()
             } else {
-                doNothing
+                state.noSideEffects()
             }
         }
         is Intent.StartWordScreen -> {
@@ -74,9 +58,9 @@ val store = Mvi.store<State, Intent, SideEffect>(
                         word = findNextWord(null, words, BrowserStorage),
                         wordState = WordState.Hidden
                     )
-                ).onlyState()
+                ).noSideEffects()
             } else {
-                doNothing
+                state.noSideEffects()
             }
         }
         is Intent.MarkWord -> {
@@ -113,11 +97,11 @@ val store = Mvi.store<State, Intent, SideEffect>(
                             throw Error("bad variant: is WordState.Fail")
                         }
                     }
-                ).andEffect(
+                ).addSideEffect(
                     SideEffect.StoreWord(state.screen.word.hint, intent.success)
                 )
             } else {
-                doNothing
+                state.noSideEffects()
             }
         }
         is Intent.OpenWord -> {
@@ -126,9 +110,9 @@ val store = Mvi.store<State, Intent, SideEffect>(
                     screen = state.screen.copy(
                         wordState = WordState.Open
                     )
-                ).onlyState()
+                ).noSideEffects()
             } else {
-                doNothing
+                state.noSideEffects()
             }
         }
         is Intent.NextWord -> {
@@ -138,9 +122,9 @@ val store = Mvi.store<State, Intent, SideEffect>(
                         word = findNextWord(state.screen.word, state.screen.words, BrowserStorage),
                         wordState = WordState.Hidden
                     )
-                ).onlyState()
+                ).noSideEffects()
             } else {
-                doNothing
+                state.noSideEffects()
             }
         }
     }

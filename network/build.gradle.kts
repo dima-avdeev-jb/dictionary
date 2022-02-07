@@ -3,7 +3,7 @@ plugins {
 }
 
 kotlin {
-    js {
+    js(IR) {
         browser {
             testTask {
                 testLogging {
@@ -32,7 +32,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-js"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val jsTest by getting {

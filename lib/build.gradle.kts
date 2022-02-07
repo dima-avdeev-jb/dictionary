@@ -1,73 +1,27 @@
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
+    id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version KOTLIN_VERSION
 }
 
 kotlin {
-    js {
+    js(IR) {
         useCommonJs()
-        browser {
-            testTask {
-                testLogging {
-                    showExceptions = true
-//                    exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-                    showCauses = true
-                    showStackTraces = true
-                }
-            }
-        }
-        nodejs {
-            testTask {
-                testLogging {
-                    showExceptions = true
-//                    exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-                    showCauses = true
-                    showStackTraces = true
-                }
-            }
-        }
-    }
-    jvm {
-
+        browser {}
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-common"))
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$SERIALIZATION_VERSION")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$SERIALIZATION_VERSION")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
             }
         }
         val jsMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-js"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")
-                implementation("org.jetbrains:kotlin-react:16.13.1-$KOTLIN_WRAPPER_VERSION")
-                implementation("org.jetbrains:kotlin-react-dom:16.13.1-$KOTLIN_WRAPPER_VERSION")
-                implementation(npm("react", "16.13.1"))
-                implementation(npm("react-dom", "16.13.1"))
-            }
-        }
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
-        }
-        val jvmMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib-jdk8"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
-            }
-        }
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(kotlin("test-junit"))
+                implementation(compose.web.core)
+                implementation(compose.runtime)
             }
         }
     }
