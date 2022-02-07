@@ -4,6 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.job
 import mvi.*
+import org.jetbrains.compose.web.css.textAlign
 import org.jetbrains.compose.web.dom.Div
 import view.RenderAppState
 
@@ -14,7 +15,11 @@ fun SetupComposable() {
 
     val store = remember { viewScope.createStore() }
     val state by store.stateFlow.collectAsState()
-    Div {
+    Div({
+        style {
+            textAlign("center")
+        }
+    }) {
         RenderAppState(state) {
             store.send(it)
         }

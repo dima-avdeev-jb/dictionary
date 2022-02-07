@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import dict.*
 import lib.*
 import mvi.Intent
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -20,13 +21,7 @@ fun RenderAppState(state: State, sendIntent: (Intent) -> Unit) {
             TxtButton("Очистить статистику") {
                 BrowserStorage.clear()
             }
-            Div {
-//                css {
-//                fontSize = 24.pt
-//                }
-                Text("Обновление словарей: " + state.deployTime)
-            }
-
+            Txt("Обновление словарей: " + state.deployTime, 24)
             allDictionaries.forEach { dictionary: Dictionary ->
                 Div {
                     val selected = state.screen.selected.contains(dictionary)
@@ -45,98 +40,70 @@ fun RenderAppState(state: State, sendIntent: (Intent) -> Unit) {
         is Screen.Words -> {
             when (state.screen.wordState) {
                 is WordState.Hidden -> {
-                    Div {
-                        Text("Знаешь слово ?")
-                        Br { }
-                        Br { }
-                        TxtButton("Показать перевод") {
-                            sendIntent(Intent.OpenWord)
-                        }
-                        Br { }
-                        Br { }
-                        Div {
-//                            css {
-//                                fontWeight = FontWeight.bold
-//                                fontSize = WORD_PT
-//                            }
-                            Text(state.screen.word.hint)
-                        }
-                        Br {}
-                        TxtButton("Да", YES_NO_PT) {
-                            //todo green
-                            sendIntent(Intent.MarkWord(true))
-                        }
-                        Text("...")
-                        TxtButton("Нет", YES_NO_PT) {
-                            //todo dark red
-                            sendIntent(Intent.MarkWord(false))
-                        }
+                    Text("Знаешь слово ?")
+                    Br { }
+                    Br { }
+                    TxtButton("Показать перевод") {
+                        sendIntent(Intent.OpenWord)
+                    }
+                    Br { }
+                    Br { }
+                    Txt(state.screen.word.hint, WORD_PT, "bold")
+                    Br {}
+                    GreenBtn("Да") {
+                        sendIntent(Intent.MarkWord(true))
+                    }
+                    Text("...")
+                    RedBtn("Нет") {
+                        sendIntent(Intent.MarkWord(false))
                     }
                 }
                 is WordState.Open -> {
-                    Div {
-                        Text("Знаешь слово ?")
-                        Br {}
-                        Br {}
-                        Div {
-//                            fontSize = WORD_PT
-                            Text(state.screen.word.hint)
+                    Text("Знаешь слово ?")
+                    Br {}
+                    Br {}
+                    Txt(state.screen.word.hint, WORD_PT)
+                    Br {}
+                    Br {}
+                    Div({
+                        style {
+                            fontWeight("bold")
+                            fontSize(WORD_PT.pt)
                         }
-                        Br {}
-                        Br {}
-                        Div {
-//                            css {
-//                                fontWeight = FontWeight.bold
-//                                fontSize = WORD_PT
-//                            }
-                            Text(state.screen.word.secret)
-                        }
-                        Br {}
-                        TxtButton("Да", YES_NO_PT) {
-                            //todo darkGreen
-                            sendIntent(Intent.MarkWord(true))
-                        }
-                        Text("...")
-                        TxtButton("Нет", YES_NO_PT) {
-                            //todo dark red
-                            sendIntent(Intent.MarkWord(false))
-                        }
+                    }) {
+                        Text(state.screen.word.secret)
+                    }
+                    Br {}
+                    GreenBtn("Да") {
+                        sendIntent(Intent.MarkWord(true))
+                    }
+                    Text("...")
+                    RedBtn("Нет") {
+                        sendIntent(Intent.MarkWord(false))
                     }
                 }
                 is WordState.Fail -> {
-                    Div {
-                        Text("Вот как правильно:")
-                        Br {}
-                        Br {}
-                        Div {
-//                            css {
-//                                fontSize = WORD_PT
-//                            }
-                            Text(state.screen.word.hint)
-                        }
-                        Br {}
-                        Br {}
-                        Div {
-//                            css {
-//                                fontWeight = FontWeight.bold
-//                                fontSize = WORD_PT
-//                            }
-                            Text(state.screen.word.secret)
-                        }
-                        Br {}
-                        TxtButton("Дальше", YES_NO_PT) {
-                            sendIntent(Intent.NextWord)
-                        }
+                    Text("Вот как правильно:")
+                    Br {}
+                    Br {}
+                    Txt(state.screen.word.hint, WORD_PT)
+                    Br {}
+                    Br {}
+                    Txt(state.screen.word.secret, WORD_PT, "bold")
+                    Br {}
+                    TxtButton("Дальше", YES_NO_PT) {
+                        sendIntent(Intent.NextWord)
                     }
                 }
             }
             Br {}
             Br {}
-            Div {
-//                css {
-//                    fontSize = 20.pt
-//                    color = Color.gray
-//                }
+            Div({
+                style {
+                    fontSize(20.pt)
+                    color(Color("gray"))
+                }
+            }) {
                 val stat = BrowserStorage.getItem(state.screen.word.hint) ?: StoreItem()
                 Text("Статистика по этоу слову:")
                 Br {}
@@ -154,7 +121,7 @@ fun RenderAppState(state: State, sendIntent: (Intent) -> Unit) {
 }
 
 @Composable
-fun TxtButton(label: String, size: Int = 30, action: () -> Unit) {
+fun TxtButton(label: String, size: Int = 30, styleBuilder: StyleBuilder.() -> Unit = {}, action: () -> Unit) {
     Button(
         attrs = {
             this.onClick {
@@ -162,6 +129,39 @@ fun TxtButton(label: String, size: Int = 30, action: () -> Unit) {
             }
         }
     ) {
+        Div({
+            style {
+                fontSize(size.pt)
+                styleBuilder()
+            }
+        }) {
+            Text(label)
+        }
+    }
+}
+
+@Composable
+fun GreenBtn(label: String, action: () -> Unit) {
+    TxtButton(label, size = YES_NO_PT, {
+        color(Color("#006400"))
+    }, action)
+}
+
+@Composable
+fun RedBtn(label: String, action: () -> Unit) {
+    TxtButton(label, size = YES_NO_PT, {
+        color(Color("#8B0000"))
+    }, action)
+}
+
+@Composable
+fun Txt(label: String, size: Int, weight:String = "normal") {
+    Div({
+        style {
+            fontSize(size.pt)
+            fontWeight(weight)
+        }
+    }) {
         Text(label)
     }
 }
