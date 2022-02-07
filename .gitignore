@@ -16,3 +16,4 @@ node_modules
 package.json
 
 .DS_Store
+/kotlin-js-store/yarn.lock
