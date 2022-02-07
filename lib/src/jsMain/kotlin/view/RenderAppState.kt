@@ -36,6 +36,7 @@ fun RenderAppState(state: State, sendIntent: (Intent) -> Unit) {
             TxtButton("Начать", YES_NO_PT) {
                 sendIntent(Intent.StartWordScreen)
             }
+            Txt("BUILD_TIME at ${conf.BuildConfig.BUILD_TIME}", 20)
         }
         is Screen.Words -> {
             when (state.screen.wordState) {
