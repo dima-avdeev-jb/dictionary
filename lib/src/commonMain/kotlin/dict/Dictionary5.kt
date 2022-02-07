@@ -9,5 +9,6 @@ val dictionary5
             word("захватывающий", "breathtaking")
             word("научная фантастика", "science fiction (Sci-fi)")
             word("оценить", "estimate")
+            word("жду с нетерпением", "looking forward to")
         }
     )
