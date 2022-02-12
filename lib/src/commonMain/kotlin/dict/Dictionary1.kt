@@ -49,7 +49,7 @@ val dictionary1
       word("origin", "происхождение, начало, точка старта")
       word("reentrant", "входящий")
       word("persistent", "стойкий (persistence - упорство, выносливость)")
-      word("spark", "искра")
+      word("spark, sparkl", "искра, блеск")
       word("ignite", "воспломеняется")
       word("halt", "привал или стой (остановка)")
       word("foundation", "фундамент или фонд")
