@@ -4,14 +4,12 @@ fun MutableList<Word>.word(hint: String, secret: String) {
     add(Word(hint, secret))
 }
 
-val allDictionaries: Iterable<Dictionary> by lazy {
-    buildList {
-        add(dictionary1)
-        add(dictionary2)
-        add(dictionary3)
-        add(dictionary4)
-        add(dictionary5)
-        add(dictionary6)
-        add(dictionaryGrammar)
-    }
-}
+val allDictionaries: List<Dictionary> = listOf(
+    dictionary1,
+    dictionary2,
+    dictionary3,
+    dictionary4,
+    dictionary5,
+    dictionary6,
+    dictionaryGrammar,
+)

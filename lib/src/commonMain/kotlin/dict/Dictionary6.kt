@@ -7,6 +7,7 @@ val dictionary6
         useByDefault = true,
         words = buildList {
             word("opinion, opinionated", "мнение, самоуверенный упрямый")
+            word("suddenly", "случайно")
             word("", "")
         }
     )
