@@ -1,3 +1,4 @@
 # Dictionary
 
-https://avdim.github.io/dictionary/
+https://dima-avdeev-jb.github.io/dictionary/
+
