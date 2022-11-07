@@ -16,7 +16,7 @@ val dictionary6
             word("comprehensive", "всесторонний, всеобъемлющий")
             word("bound, boundary", "связанный, граница")
             word("streamline", "упорядочить, рационализировать")
-            word("", "")
+            word("above / under", "над / под")
             word("", "")
             word("", "")
             word("", "")
