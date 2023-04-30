@@ -13,6 +13,16 @@ val dictionary5
             word("(вредоносное ПО)", "mallware (mallicious sofrware)")
             word("мелкая копия", "shallow copy")
             word("@ Собака", "[æt] или [et]")
-            word("", "")
+            word("дыхание", "breath")
+            word("ширина", "width, breadth")
+            word("толщина", "thickness")
+            word("явный", "explicit")
+            word("не явный", "implicit")
+            word("устранять неоднозначность", "disambiguate")
+            word("двусмысленно, неоднозначно", "ambiguous")
+            word("копить, заначка", "stash")
+            word("предложить", "propose")
+            word("усиление", "enhancement")
+
         }
     )
