@@ -65,7 +65,7 @@ val dictionary5
             word("точный / точность", "precise / precision")
             word("отказ от ответственности", "disclaimer")
             word("под (перекрывается) / ниже", "under (overlapped) / below")
-            word("этажом выше", "one floor above")
+            word("этажом выше / ниже", "one floor above / floor below")
             word("над (движение) / выше (статика)", "over / above")
             word("самолёт летит над нашим домом", "plane flies over our house")
 
