@@ -7,7 +7,6 @@ fun MutableList<Word>.word(hint: String, secret: String) {
 val allDictionaries: List<Dictionary> = listOf(
     dictionary1,
     dictionary2,
-    dictionary3,
     dictionary4,
     dictionary5,
     dictionary6,
