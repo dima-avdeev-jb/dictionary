@@ -68,6 +68,14 @@ val dictionary5
             word("этажом выше / ниже", "one floor above / floor below")
             word("над (движение) / выше (статика)", "over / above")
             word("самолёт летит над нашим домом", "plane flies over our house")
+            word("перечеркнуть (вычеркнуть)", "cross out")
+            word("смотри текст выше", "see text above")
+            word("быть в курсе", "to be aware of")
+            word("избегать", "avoid")
+            word("В противном случае лучше ...", "Otherwise it's easier to ...")
+            word("где", "where")
+            word("", "")
+            word("", "")
 
         }
     )

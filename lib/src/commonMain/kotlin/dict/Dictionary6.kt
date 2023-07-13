@@ -33,7 +33,7 @@ val dictionary6
             word("quotient of divison", "частное от деления (результат деления)")
             word("derive, derived, derivative", "выводить, полученный, производная")
 
-            word("opinion, opinionated", "мнение, самоуверенный упрямый")
+            word("opinion / opinionated", "мнение / самоуверенный, независимый")
             word("suddenly", "случайно")
             word("dock, docking", "причал стыковка")
             word("Yours sincerely", "искренне Ваш")
@@ -129,6 +129,10 @@ val dictionary6
             word("pitch", "подача")
             word("encourage / courage", "поощрять / мужество")
             word("account / accountable", "счёт, аккаунт / ответственный")
+            word("IME", "Input method editor")
+            word("IDL", "Interface definition language")
+            word("hyphenation", "перенос слова")
+            word("fyi", "for your information")
             word("", "")
             word("", "")
         }
