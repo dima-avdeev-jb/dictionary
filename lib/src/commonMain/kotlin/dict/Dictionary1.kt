@@ -190,7 +190,7 @@ val dictionary1
       word("deny", "отрицать")
       word("shallow copy", "мелкая копия (не полная)")
       word("suspect / suspicious", "подозревать / подозрительный")
-      word("", "")
+      word("ptal", "please take a look")
       word("", "")
      }
     )

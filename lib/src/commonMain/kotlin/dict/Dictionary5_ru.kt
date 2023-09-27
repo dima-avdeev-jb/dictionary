@@ -74,7 +74,8 @@ val dictionary5
             word("избегать", "avoid")
             word("В противном случае лучше ...", "Otherwise it's easier to ...")
             word("где", "where")
-            word("", "")
+            word("большой / великолепный", "great / greate")
+            word("перечекнутый", "strikethrough")
             word("", "")
 
         }
