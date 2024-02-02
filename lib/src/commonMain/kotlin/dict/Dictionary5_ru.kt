@@ -76,6 +76,7 @@ val dictionary5
             word("где", "where")
             word("большой / великолепный", "great / greate")
             word("перечекнутый", "strikethrough")
+            word("обрезание текста...", "Text Truncation or Ellipsizing")
             word("", "")
 
         }
